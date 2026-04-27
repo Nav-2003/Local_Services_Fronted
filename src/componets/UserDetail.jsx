@@ -92,9 +92,9 @@ export default function LocationSearchUI() {
     const fetchProviders = async () => {
       try {
         const res = await fetch(
-          `${Api}/api/serviceAvailable/getServiceData`,
+          `${Api}/api/serviceData/getServiceData`,
           {
-            method: "POST",
+            method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               service,
@@ -119,8 +119,7 @@ export default function LocationSearchUI() {
 
   const handleBookNow = async (email) => {
     setShowPending(true);
-
-    const res = await fetch(`${Api}/api/worker/assignWorker`, {
+    const res = await fetch(`http://localhost:3001/api/bookingReq/bookingReq`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

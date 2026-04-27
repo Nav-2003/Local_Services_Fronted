@@ -1,10 +1,19 @@
 import { io } from "socket.io-client";
 
-const Api = import.meta.env.VITE_BACKEND_API;
-
-const socket = io(Api, {
+const socket = io("http://localhost:3002", {
   path: "/socket.io",
-  transports: ["polling","websocket"]  
+  transports: ["websocket","polling"],   // remove polling
+  reconnection: true,
+  reconnectionAttempts: Infinity,
+  reconnectionDelay: 1000
+});
+
+socket.on("connect", () => {
+  console.log("Connected:", socket.id);
+});
+
+socket.on("disconnect", () => {
+  console.log("Disconnected");
 });
 
 export default socket;

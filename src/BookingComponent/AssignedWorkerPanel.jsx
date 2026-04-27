@@ -16,7 +16,6 @@ export default function AssignedWorkerPanel({ worker }) {
   const [distance, setDistance] = useState(null);
   const [showFeedback,setShowFeedback]=useState(false);
   const [showPayment,setShowPayment]=useState(false);
-  console.log(worker.type)
 
   /* ================= SET EMAILS (SAFE) ================= */
   useEffect(() => {
@@ -71,6 +70,7 @@ export default function AssignedWorkerPanel({ worker }) {
 
 
   const handlePaymentSuccess = (response) => {
+  
   console.log("Payment completed", response);
   socket.emit("paymentStatus",{bookingId});
   navigate('/');

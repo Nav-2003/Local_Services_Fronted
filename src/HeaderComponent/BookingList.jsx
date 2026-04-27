@@ -46,7 +46,7 @@ export default function BookingList({ status }) {
       try {
         setLoading(true);
         const res = await fetch(
-          `${Api}/api/serviceAvailable/bookingInfrom`,
+          `http://localhost:3001/api/bookingData/bookingInfrom`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

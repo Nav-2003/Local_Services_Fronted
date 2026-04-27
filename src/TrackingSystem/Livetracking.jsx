@@ -30,7 +30,7 @@ export default function LiveTrackingPage() {
 
     const fetchAssigned = async () => {
       try {
-        const res = await fetch(`${Api}/api/email/getEmail`, {
+        const res = await fetch(`http://localhost:3001/api/userData/getUserDetail`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: folkEmail,bookingId }),
@@ -88,6 +88,7 @@ export default function LiveTrackingPage() {
   /* ================= SOCKET LISTENER ================= */
   useEffect(() => {
     const handler = ({ lat, lng }) => {
+    
       if (typeof lat === "number" && typeof lng === "number") {
         setCustomer({ lat, lng });
       }

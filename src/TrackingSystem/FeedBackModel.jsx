@@ -18,32 +18,46 @@ export default function FeedbackModal({
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  
   const handleSubmit = async () => {
-    if (rating === 0 || loading) return;
+  if (rating === 0 || loading) return;
+  try {
+    setLoading(true);
 
-    try {
-      setLoading(true);
+    let res = await fetch("http://localhost:3001/api/userData/getWorkerEmail", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ bookingId }),
+    });
 
-      const res = await fetch(`${Api}/api/feedBackPut/storeFeedback`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          bookingId,
-          text: comment,
-          rating,
-        }),
-      });
+    const emailData = await res.json();
+    const workerEmail = emailData.workerEmail;   
+    const customerEmail=emailData.customerEmail;
 
-      const data = await res.json();
-      if (data.feedback) {
-        setSubmitted(true);
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
+    res = await fetch(`http://localhost:3000/api/feedback/putFeedback`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        workerEmail,
+        customerEmail,
+        text: comment,
+        rating,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      setSubmitted(true);
     }
-  };
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   // 🎉 Celebration + auto redirect
   useEffect(() => {

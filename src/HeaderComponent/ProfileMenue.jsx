@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../config/AuthContext";
 
 export default function ProfileMenu() {
-  const { folkEmail } = useContext(AuthContext);
+  const { folkEmail, logout } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   const navigate = useNavigate();
 
-  // Close on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (ref.current && !ref.current.contains(e.target)) {
@@ -22,6 +21,12 @@ export default function ProfileMenu() {
 
   if (!folkEmail) return null;
 
+  const handleLogout = async () => {
+    await logout();
+    setOpen(false);
+    navigate("/");
+  };
+
   return (
     <div className="relative z-50" ref={ref}>
       {/* Avatar */}
@@ -30,7 +35,7 @@ export default function ProfileMenu() {
         className="w-9 h-9 rounded-full
                    bg-gradient-to-br from-gray-200 to-gray-300
                    text-gray-800 font-semibold
-                   flex items-center justify-center
+                   flex items-center justify-center 
                    hover:shadow-md hover:scale-105
                    transition-all duration-150"
       >
@@ -40,7 +45,7 @@ export default function ProfileMenu() {
       {/* Dropdown */}
       {open && (
         <div
-          className="absolute left-1/2 top-full mt-3 -translate-x-1/2 w-64
+          className="absolute left-1/2 top-full mt-3 -translate-x-1/2 w-60
                      rounded-2xl bg-white/95 backdrop-blur
                      border border-gray-200
                      shadow-[0_12px_30px_rgba(0,0,0,0.12)]
@@ -54,10 +59,9 @@ export default function ProfileMenu() {
             {folkEmail}
           </p>
 
-          {/* Divider */}
           <div className="h-px bg-gray-200 mb-3" />
 
-          {/* My Bookings Link */}
+          {/* My Bookings */}
           <button
             onClick={() => {
               navigate("/bookingsInform");
@@ -69,17 +73,34 @@ export default function ProfileMenu() {
           >
             My Bookings
           </button>
+
+          {/* Worker */}
           <button
-          onClick={()=>navigate('/service/waitingRoom')}
-      className="w-full flex items-center justify-between
-                 px-3 py-2 rounded-xl
-                 text-sm font-medium text-gray-700
-                 hover:bg-gray-100
-                 transition"
-    >
-      Find Work
-      <span className="text-gray-400">→</span>
-    </button>
+            onClick={() => {
+              navigate("/service/waitingRoom");
+              setOpen(false);
+            }}
+            className="w-full flex items-center justify-between
+                       px-3 py-2 rounded-xl
+                       text-sm font-medium text-gray-700
+                       hover:bg-gray-100 transition"
+          >
+            Find Work
+            <span className="text-gray-400">→</span>
+          </button>
+
+          {/* Divider */}
+          <div className="h-px bg-gray-200 my-3" />
+
+          {/* Logout */}
+          <button
+            onClick={handleLogout}
+            className="w-full text-left px-3 py-2 rounded-xl
+                       text-sm font-medium text-red-600
+                       hover:bg-red-50 transition"
+          >
+            Logout
+          </button>
         </div>
       )}
     </div>

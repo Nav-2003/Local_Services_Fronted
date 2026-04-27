@@ -1,6 +1,6 @@
-const Api=import.meta.env.VITE_BACKEND_API;
+const Api='http://localhost:3001';
 const handleCancelButton = async ({ bookingId }) => {
-      const response= await fetch(`${Api}/api/service/cancelBooking`,{
+      const response= await fetch(`${Api}/api/bokingCancelUser/cancelBooking`,{
          method:"PUT",
          headers:{
            "Content-Type":"application/json"

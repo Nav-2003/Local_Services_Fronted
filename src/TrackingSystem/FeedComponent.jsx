@@ -16,7 +16,7 @@ const FeedbackComponent = ({ provider }) => {
         setLoading(true);
 
         const res = await fetch(
-          `${Api}/api/feedBackGet/getFeedback`,
+          `http://localhost:3000/api/feedback/getFeedback`,
           {
             method: "PUT",
             headers: {
@@ -27,7 +27,12 @@ const FeedbackComponent = ({ provider }) => {
         );
 
         const result = await res.json();
-        setFeedbacks(result.data || []);
+
+        console.log(result); // 🔥 debug
+
+        // ✅ FIXED HERE
+        setFeedbacks(result.feedbacks || []);
+
       } catch (err) {
         console.error(err);
       } finally {
@@ -46,6 +51,7 @@ const FeedbackComponent = ({ provider }) => {
       : feedbacks.filter((f) => f.rating === Number(filter));
 
   const total = feedbacks.length;
+
   const average =
     total > 0
       ? (

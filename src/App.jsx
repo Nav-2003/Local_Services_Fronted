@@ -10,10 +10,12 @@ import HowItWorks from "./HeaderComponent/HowItWork";
 import AboutUs from "./HeaderComponent/About";
 import BookingFlow from "./HeaderComponent/BookingInform";
 import BookingList from "./HeaderComponent/BookingList";
+import SocketRegister from "./config/socketRegister";
 
 function App() {
   return (
     <BrowserRouter>
+    <SocketRegister/>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />

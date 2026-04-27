@@ -19,6 +19,7 @@ export default function WorkerWaitingForCustomer({ workerName = "Worker" }) {
   });
 
   socket.on("assignCustmorResult", ({distance,name,bookingId}) => {
+    console.log(distance,name,bookingId)
     setdata({name:name,distance:distance})
     setBookingId(bookingId);
     setShowAssignment(true);
@@ -105,7 +106,7 @@ export default function WorkerWaitingForCustomer({ workerName = "Worker" }) {
       {showAssignment&&(<QuickMatch 
           data={data}
           onAccept={async()=>{
-              const response=await fetch(`${Api}/api/worker/accept`,{
+              const response=await fetch(`http://localhost:3001/api/bookingRes/accept`,{
                    method:"PUT",
                    headers:{
                       "Content-Type":"application/json"
@@ -118,7 +119,7 @@ export default function WorkerWaitingForCustomer({ workerName = "Worker" }) {
             navigate('/serivice/liveTracking')
           }}
           onReject={async()=>{
-             const response=await fetch(`${Api}/api/worker/reject`,{
+             const response=await fetch(`http://localhost:3001/api/bookingrej/reject`,{
                    method:"PUT",
                    headers:{
                       "Content-Type":"application/json"
