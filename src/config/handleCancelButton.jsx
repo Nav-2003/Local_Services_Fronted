@@ -1,6 +1,6 @@
 const Api='http://localhost:3001';
 const handleCancelButton = async ({ bookingId }) => {
-      const response= await fetch(`${Api}/api/bokingCancelUser/cancelBooking`,{
+      const response= await fetch(`${Api}/api/booking/bokingCancelUser/cancelBooking`,{
          method:"PUT",
          headers:{
            "Content-Type":"application/json"

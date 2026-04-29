@@ -62,7 +62,7 @@ export default function BookingPendingOverlay({
 
   const handleOnClose=()=>{
        
-        const data=fetch(`http://localhost:3001/api/bookingrej/cancel_customer`,{
+        const data=fetch(`http://localhost:3001/api/booking/bookingrej/cancel_customer`,{
                   method:'PUT',
                   headers:{
                      "Content-Type": "application/json" 

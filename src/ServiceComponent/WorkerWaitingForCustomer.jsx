@@ -106,7 +106,7 @@ export default function WorkerWaitingForCustomer({ workerName = "Worker" }) {
       {showAssignment&&(<QuickMatch 
           data={data}
           onAccept={async()=>{
-              const response=await fetch(`http://localhost:3001/api/bookingRes/accept`,{
+              const response=await fetch(`http://localhost:3001/api/booking/bookingRes/accept`,{
                    method:"PUT",
                    headers:{
                       "Content-Type":"application/json"
@@ -119,7 +119,7 @@ export default function WorkerWaitingForCustomer({ workerName = "Worker" }) {
             navigate('/serivice/liveTracking')
           }}
           onReject={async()=>{
-             const response=await fetch(`http://localhost:3001/api/bookingrej/reject`,{
+             const response=await fetch(`http://localhost:3001/api/booking/bookingrej/reject`,{
                    method:"PUT",
                    headers:{
                       "Content-Type":"application/json"

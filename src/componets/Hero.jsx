@@ -61,7 +61,7 @@ const handleSearchButton=async()=>{
        setShowSignIn(true);
        return;
      }
-     const response=await fetch(`${Api}/api/serviceData/getServiceData`,{
+     const response=await fetch(`${Api}/api/auth/serviceData/getServiceData`,{
          method:'PUT',
          headers:{
            'Content-Type':'application/json'

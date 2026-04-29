@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const restoreSession = async () => {
       try {
-        const res = await fetch(`${Api}/api/userAuth/refresh/refreshSignin`, {
+        const res = await fetch(`${Api}/api/auth/userAuth/refresh/refreshSignin`, {
           credentials: "include",
         });
 
@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
   try {
-    await fetch(`${Api}/api/userAuth/UserLogout/logout`, {
+    await fetch(`${Api}/api/auth/userAuth/UserLogout/logout`, {
       method: "POST",
       credentials: "include",
     });

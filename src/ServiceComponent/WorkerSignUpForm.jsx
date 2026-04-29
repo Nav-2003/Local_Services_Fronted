@@ -347,7 +347,7 @@ export default function WorkerSignupForm() {
     if (!email) { setEmailExists(false); return; }
     const timer = setTimeout(async () => {
       try {
-        const res = await fetch(`${Api}/api/workerAuth/checkEmail`, {
+        const res = await fetch(`${Api}/api/auth/workerAuth/checkEmail`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
@@ -377,7 +377,7 @@ export default function WorkerSignupForm() {
     try {
       setLoading(true);
       const { lat, lng } = await getLocation();
-      const response = await fetch(`${Api}/api/workerAuth/signUp/workerSignUp`, {
+      const response = await fetch(`${Api}/api/auth/workerAuth/signUp/workerSignUp`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

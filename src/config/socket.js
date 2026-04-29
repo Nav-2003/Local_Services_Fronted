@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 
 const socket = io("http://localhost:3002", {
   path: "/socket.io",
-  transports: ["websocket","polling"],   // remove polling
+  transports: ["websocket","polling"],   
   reconnection: true,
   reconnectionAttempts: Infinity,
   reconnectionDelay: 1000

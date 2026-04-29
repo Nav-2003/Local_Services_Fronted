@@ -17,7 +17,7 @@ export default function RazorpayPaymentModal({
   const handlePayment = async () => {
     try {
       // 1️⃣ Create order from backend
-      const res = await axios.post(`http://localhost:3003/api/payment-init/create-order`, {
+      const res = await axios.post(`http://localhost:3003/api/payment/payment-init/create-order`, {
         amount,
         bookingId,
       });

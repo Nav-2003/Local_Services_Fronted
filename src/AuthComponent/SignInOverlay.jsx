@@ -62,7 +62,7 @@ export default function SignInOverlay({ onClose }) {
     try {
       setLoading(true);
 
-      const response = await fetch(`${Api}/api/userAuth/signIn`, {
+      const response = await fetch(`${Api}/api/auth/userAuth/signIn`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

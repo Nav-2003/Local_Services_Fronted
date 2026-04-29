@@ -42,7 +42,7 @@ export default function SignupOverlay({ onClose }) {
       setLoading(true);
 
       const response = await fetch(
-        `${Api}/api/userAuth/signUp/customerSignUp`,
+        `${Api}/api/auth/userAuth/signUp/customerSignUp`,
         {
           method: "PUT",
           headers: {

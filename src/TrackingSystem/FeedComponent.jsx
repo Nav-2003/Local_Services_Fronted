@@ -16,7 +16,7 @@ const FeedbackComponent = ({ provider }) => {
         setLoading(true);
 
         const res = await fetch(
-          `http://localhost:3000/api/feedback/getFeedback`,
+          `http://localhost:3000/api/auth/feedback/getFeedback`,
           {
             method: "PUT",
             headers: {

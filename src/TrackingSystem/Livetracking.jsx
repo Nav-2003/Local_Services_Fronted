@@ -30,7 +30,7 @@ export default function LiveTrackingPage() {
 
     const fetchAssigned = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/api/userData/getUserDetail`, {
+        const res = await fetch(`http://localhost:3001/api/booking/userData/getUserDetail`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: folkEmail,bookingId }),
