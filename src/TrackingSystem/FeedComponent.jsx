@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const Api = import.meta.env.VITE_BACKEND_API;
+const ip=import.meta.env.VITE_IP;
 
 const FeedbackComponent = ({ provider }) => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -16,7 +17,7 @@ const FeedbackComponent = ({ provider }) => {
         setLoading(true);
 
         const res = await fetch(
-          `http://localhost:3000/api/auth/feedback/getFeedback`,
+          `http://${ip}:3000/api/auth/feedback/getFeedback`,
           {
             method: "PUT",
             headers: {

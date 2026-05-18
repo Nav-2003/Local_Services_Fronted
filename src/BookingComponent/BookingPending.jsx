@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 
 const Api = import.meta.env.VITE_BACKEND_API;
+const ip=import.meta.env.VITE_IP
+
 export default function BookingPendingOverlay({
   provider,
   bookingId,
@@ -62,7 +64,7 @@ export default function BookingPendingOverlay({
 
   const handleOnClose=()=>{
        
-        const data=fetch(`http://localhost:3001/api/booking/bookingrej/cancel_customer`,{
+        const data=fetch(`http://${ip}:3001/api/booking/bookingrej/cancel_customer`,{
                   method:'PUT',
                   headers:{
                      "Content-Type": "application/json" 

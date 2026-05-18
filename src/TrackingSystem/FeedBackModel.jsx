@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import confetti from "canvas-confetti";
 
 const Api = import.meta.env.VITE_BACKEND_API;
+const ip=import.meta.env.VITE_IP;
 
 export default function FeedbackModal({
   open,
@@ -24,7 +25,7 @@ export default function FeedbackModal({
   try {
     setLoading(true);
 
-    let res = await fetch("http://localhost:3001/api/booking/userData/getWorkerEmail", {
+    let res = await fetch(`http://${ip}:3001/api/booking/userData/getWorkerEmail`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +37,7 @@ export default function FeedbackModal({
     const workerEmail = emailData.workerEmail;   
     const customerEmail=emailData.customerEmail;
 
-    res = await fetch(`http://localhost:3000/api/auth/feedback/putFeedback`, {
+    res = await fetch(`http://${ip}:3000/api/auth/feedback/putFeedback`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

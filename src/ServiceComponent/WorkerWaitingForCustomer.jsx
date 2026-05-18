@@ -6,6 +6,7 @@ import { AuthContext } from "../config/AuthContext";
 import QuickMatch from "./AssignCustomer";
 import { useNavigate } from "react-router-dom";
 const Api=import.meta.env.VITE_BACKEND_API;
+const ip=import.meta.env.VITE_IP;
 
 export default function WorkerWaitingForCustomer({ workerName = "Worker" }) {
   const [showAssignment,setShowAssignment]=useState(false);
@@ -106,7 +107,7 @@ export default function WorkerWaitingForCustomer({ workerName = "Worker" }) {
       {showAssignment&&(<QuickMatch 
           data={data}
           onAccept={async()=>{
-              const response=await fetch(`http://localhost:3001/api/booking/bookingRes/accept`,{
+              const response=await fetch(`http://${ip}:3001/api/booking/bookingRes/accept`,{
                    method:"PUT",
                    headers:{
                       "Content-Type":"application/json"
@@ -119,7 +120,7 @@ export default function WorkerWaitingForCustomer({ workerName = "Worker" }) {
             navigate('/serivice/liveTracking')
           }}
           onReject={async()=>{
-             const response=await fetch(`http://localhost:3001/api/booking/bookingrej/reject`,{
+             const response=await fetch(`http://${ip}:3001/api/booking/bookingrej/reject`,{
                    method:"PUT",
                    headers:{
                       "Content-Type":"application/json"

@@ -1,6 +1,7 @@
-const Api='http://localhost:3001';
+const ip=import.meta.env.VITE_IP;
+
 const handleCancelButton = async ({ bookingId }) => {
-      const response= await fetch(`${Api}/api/booking/bokingCancelUser/cancelBooking`,{
+      const response= await fetch(`http://${ip}:3001/api/booking/bokingCancelUser/cancelBooking`,{
          method:"PUT",
          headers:{
            "Content-Type":"application/json"

@@ -10,6 +10,7 @@ import { AuthContext } from "../config/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Api = import.meta.env.VITE_BACKEND_API;
+const ip=import.meta.env.VITE_IP;
 
 /* ---------------- UTILS ---------------- */
 
@@ -46,7 +47,7 @@ export default function BookingList({ status }) {
       try {
         setLoading(true);
         const res = await fetch(
-          `http://localhost:3001/api/booking/bookingData/bookingInfrom`,
+          `http://${ip}:3001/api/booking/bookingData/bookingInfrom`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -185,7 +186,7 @@ export default function BookingList({ status }) {
   );
 }
 
-/* ---------------- STATUS BADGE ---------------- */
+
 
 function StatusBadge({ status }) {
   const styles = {

@@ -14,6 +14,7 @@ const serviceOptions = ["Plumber","Electrician","Mechanic","Barber","Carpenter",
 ];
 
 const Api=import.meta.env.VITE_BACKEND_API;
+const ip=import.meta.env.VITE_IP;
 
 const Hero = () => {
 
@@ -61,7 +62,7 @@ const handleSearchButton=async()=>{
        setShowSignIn(true);
        return;
      }
-     const response=await fetch(`${Api}/api/auth/serviceData/getServiceData`,{
+     const response=await fetch(`http://${ip}:3000/api/auth/serviceData/getServiceData`,{
          method:'PUT',
          headers:{
            'Content-Type':'application/json'

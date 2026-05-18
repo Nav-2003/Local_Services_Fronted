@@ -11,6 +11,7 @@ import FeedbackPanel from "../TrackingSystem/FeedBackPanel";
 import { AuthContext } from "../config/AuthContext";
 
 const Api = import.meta.env.VITE_BACKEND_API;
+const ip=import.meta.env.VITE_IP;
 
 /* ================= ICONS ================= */
 
@@ -91,7 +92,7 @@ export default function LocationSearchUI() {
     const fetchProviders = async () => {
       try {
         const res = await fetch(
-          `${Api}/api/auth/serviceData/getServiceData`,
+          `http://${ip}:3000/api/auth/serviceData/getServiceData`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -118,7 +119,7 @@ export default function LocationSearchUI() {
 
   const handleBookNow = async (email) => {
     setShowPending(true);
-    const res = await fetch(`http://localhost:3001/api/booking/bookingReq/bookingReq`, {
+    const res = await fetch(`http://${ip}:3001/api/booking/bookingReq/bookingReq`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

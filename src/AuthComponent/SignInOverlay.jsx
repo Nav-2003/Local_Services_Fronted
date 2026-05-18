@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
 
 const Api = import.meta.env.VITE_BACKEND_API;
+const ip=import.meta.env.VITE_IP;
 
 export default function SignInOverlay({ onClose }) {
   const {
@@ -62,7 +63,7 @@ export default function SignInOverlay({ onClose }) {
     try {
       setLoading(true);
 
-      const response = await fetch(`${Api}/api/auth/userAuth/signIn`, {
+      const response = await fetch(`http://${ip}:3000/api/auth/userAuth/signIn`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

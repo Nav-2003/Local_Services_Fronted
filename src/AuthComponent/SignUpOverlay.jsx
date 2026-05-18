@@ -5,6 +5,7 @@ import { AuthContext } from "../config/AuthContext";
 import SignInOverlay from "./SignInOverlay";
 
 const Api = import.meta.env.VITE_BACKEND_API;
+const ip=import.meta.env.VITE_IP;
 
 export default function SignupOverlay({ onClose }) {
   const { setFolkEmail, folkEmail } = useContext(AuthContext);

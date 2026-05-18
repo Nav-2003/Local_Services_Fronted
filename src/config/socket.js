@@ -1,6 +1,7 @@
 import { io } from "socket.io-client";
+const ip=import.meta.env.VITE_IP;
 
-const socket = io("http://localhost:3002", {
+const socket = io(`http://${ip}:3002`, {
   path: "/socket.io",
   transports: ["websocket","polling"],   
   reconnection: true,
