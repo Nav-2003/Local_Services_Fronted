@@ -10,8 +10,10 @@ import AssignedWorkerPanel from "../BookingComponent/AssignedWorkerPanel";
 import FeedbackPanel from "../TrackingSystem/FeedBackPanel";
 import { AuthContext } from "../config/AuthContext";
 
-const Api = import.meta.env.VITE_BACKEND_API;
-const ip=import.meta.env.VITE_IP;
+const ApiZ = import.meta.env.VITE_BACKEND_APIZ;
+const ApiO = import.meta.env.VITE_BACKEND_APIO;
+const ApiT = import.meta.env.VITE_BACKEND_APIT;
+const ApiH = import.meta.env.VITE_BACKEND_APIH;
 
 /* ================= ICONS ================= */
 
@@ -92,7 +94,7 @@ export default function LocationSearchUI() {
     const fetchProviders = async () => {
       try {
         const res = await fetch(
-          `http://${ip}:3000/api/auth/serviceData/getServiceData`,
+          `${ApiZ}/api/auth/serviceData/getServiceData`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -119,7 +121,7 @@ export default function LocationSearchUI() {
 
   const handleBookNow = async (email) => {
     setShowPending(true);
-    const res = await fetch(`http://${ip}:3001/api/booking/bookingReq/bookingReq`, {
+    const res = await fetch(`${ApiO}/api/booking/bookingReq/bookingReq`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

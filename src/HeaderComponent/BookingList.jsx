@@ -9,8 +9,10 @@ import {
 import { AuthContext } from "../config/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const Api = import.meta.env.VITE_BACKEND_API;
-const ip=import.meta.env.VITE_IP;
+const ApiZ = import.meta.env.VITE_BACKEND_APIZ;
+const ApiO = import.meta.env.VITE_BACKEND_APIO;
+const ApiT = import.meta.env.VITE_BACKEND_APIT;
+const ApiH = import.meta.env.VITE_BACKEND_APIH;
 
 /* ---------------- UTILS ---------------- */
 
@@ -47,7 +49,7 @@ export default function BookingList({ status }) {
       try {
         setLoading(true);
         const res = await fetch(
-          `http://${ip}:3001/api/booking/bookingData/bookingInfrom`,
+          `${ApiO}/api/booking/bookingData/bookingInfrom`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

@@ -329,7 +329,10 @@ const styles = `
   }
 `;
 
-const ip=import.meta.env.VITE_IP;
+const ApiZ = import.meta.env.VITE_BACKEND_APIZ;
+const ApiO = import.meta.env.VITE_BACKEND_APIO;
+const ApiT = import.meta.env.VITE_BACKEND_APIT;
+const ApiH = import.meta.env.VITE_BACKEND_APIH;
 
 export default function WorkerSignupForm() {
   const { setFolkEmail } = useContext(AuthContext);
@@ -349,7 +352,7 @@ export default function WorkerSignupForm() {
     if (!email) { setEmailExists(false); return; }
     const timer = setTimeout(async () => {
       try {
-        const res = await fetch(`http://${ip}:3000/api/auth/workerAuth/checkEmail`, {
+        const res = await fetch(`${ApiZ}/api/auth/workerAuth/checkEmail`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
@@ -379,7 +382,7 @@ export default function WorkerSignupForm() {
     try {
       setLoading(true);
       const { lat, lng } = await getLocation();
-      const response = await fetch(`http://${ip}:3000/api/auth/workerAuth/signUp/workerSignUp`, {
+      const response = await fetch(`${ApiZ}/api/auth/workerAuth/signUp/workerSignUp`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

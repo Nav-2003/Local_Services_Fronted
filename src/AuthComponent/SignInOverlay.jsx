@@ -6,8 +6,11 @@ import SuccessOverlay from "../ServiceComponent/SuccessAuth";
 import { useNavigate } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
 
-const Api = import.meta.env.VITE_BACKEND_API;
-const ip=import.meta.env.VITE_IP;
+const ApiZ = import.meta.env.VITE_BACKEND_APIZ;
+const ApiO = import.meta.env.VITE_BACKEND_APIO;
+const ApiT = import.meta.env.VITE_BACKEND_APIT;
+const ApiH = import.meta.env.VITE_BACKEND_APIH;
+
 
 export default function SignInOverlay({ onClose }) {
   const {
@@ -63,7 +66,7 @@ export default function SignInOverlay({ onClose }) {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://${ip}:3000/api/auth/userAuth/signIn`, {
+      const response = await fetch(`${ApiZ}/api/auth/userAuth/signIn`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

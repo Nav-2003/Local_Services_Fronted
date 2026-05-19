@@ -7,7 +7,10 @@ import AssignedWorkerPanel from "../BookingComponent/AssignedWorkerPanel";
 import { AuthContext } from "../config/AuthContext";
 import FloatingChat from "./FloatingChat";
 
-const ip=import.meta.env.VITE_IP;
+const ApiZ = import.meta.env.VITE_BACKEND_APIZ;
+const ApiO = import.meta.env.VITE_BACKEND_APIO;
+const ApiT = import.meta.env.VITE_BACKEND_APIT;
+const ApiH = import.meta.env.VITE_BACKEND_APIH;
 
 /* ================= FIX LEAFLET ICON ================= */
 delete L.Icon.Default.prototype._getIconUrl;
@@ -32,7 +35,7 @@ export default function LiveTrackingPage() {
 
     const fetchAssigned = async () => {
       try {
-        const res = await fetch(`http://${ip}:3001/api/booking/userData/getUserDetail`, {
+        const res = await fetch(`${ApiO}/api/booking/userData/getUserDetail`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: folkEmail,bookingId }),

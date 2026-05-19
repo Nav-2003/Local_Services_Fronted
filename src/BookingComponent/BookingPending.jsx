@@ -5,9 +5,10 @@ import socket from "../config/socket";
 import { AuthContext } from "../config/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-
-const Api = import.meta.env.VITE_BACKEND_API;
-const ip=import.meta.env.VITE_IP
+const ApiZ = import.meta.env.VITE_BACKEND_APIZ;
+const ApiO = import.meta.env.VITE_BACKEND_APIO;
+const ApiT = import.meta.env.VITE_BACKEND_APIT;
+const ApiH = import.meta.env.VITE_BACKEND_APIH;
 
 export default function BookingPendingOverlay({
   provider,
@@ -64,7 +65,7 @@ export default function BookingPendingOverlay({
 
   const handleOnClose=()=>{
        
-        const data=fetch(`http://${ip}:3001/api/booking/bookingrej/cancel_customer`,{
+        const data=fetch(`${ApiO}/api/booking/bookingrej/cancel_customer`,{
                   method:'PUT',
                   headers:{
                      "Content-Type": "application/json" 

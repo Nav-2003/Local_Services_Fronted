@@ -4,8 +4,10 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../config/AuthContext";
 import SignInOverlay from "./SignInOverlay";
 
-const Api = import.meta.env.VITE_BACKEND_API;
-const ip=import.meta.env.VITE_IP;
+const ApiZ = import.meta.env.VITE_BACKEND_APIZ;
+const ApiO = import.meta.env.VITE_BACKEND_APIO;
+const ApiT = import.meta.env.VITE_BACKEND_APIT;
+const ApiH = import.meta.env.VITE_BACKEND_APIH;
 
 export default function SignupOverlay({ onClose }) {
   const { setFolkEmail, folkEmail } = useContext(AuthContext);
@@ -43,7 +45,7 @@ export default function SignupOverlay({ onClose }) {
       setLoading(true);
 
       const response = await fetch(
-        `${Api}/api/auth/userAuth/signUp/customerSignUp`,
+        `${ApiZ}/api/auth/userAuth/signUp/customerSignUp`,
         {
           method: "PUT",
           headers: {

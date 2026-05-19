@@ -2,8 +2,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CreditCard, X, Lock, CheckCircle } from "lucide-react";
 import axios from "axios";
 
-const API=import.meta.env.VITE_BACKEND_API;
-const ip=import.meta.env.VITE_IP;
+const ApiZ = import.meta.env.VITE_BACKEND_APIZ;
+const ApiO = import.meta.env.VITE_BACKEND_APIO;
+const ApiT = import.meta.env.VITE_BACKEND_APIT;
+const ApiH = import.meta.env.VITE_BACKEND_APIH;
 
 export default function RazorpayPaymentModal({
   open,
@@ -18,7 +20,7 @@ export default function RazorpayPaymentModal({
   const handlePayment = async () => {
     try {
       // 1️⃣ Create order from backend
-      const res = await axios.post(`http://${ip}:3003/api/payment/payment-init/create-order`, {
+      const res = await axios.post(`${ApiH}/api/payment/payment-init/create-order`, {
         amount,
         bookingId,
       });

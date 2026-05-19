@@ -3,8 +3,10 @@ import socket from "./socket";
 
 export const AuthContext = createContext();
 
-const Api = import.meta.env.VITE_BACKEND_API;
-const ip=import.meta.env.VITE_IP;
+const ApiZ = import.meta.env.VITE_BACKEND_APIZ;
+const ApiO = import.meta.env.VITE_BACKEND_APIO;
+const ApiT = import.meta.env.VITE_BACKEND_APIT;
+const ApiH = import.meta.env.VITE_BACKEND_APIH;
 
 export const AuthProvider = ({ children }) => {
   const [signIn, setSignIn] = useState(false);
@@ -22,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const restoreSession = async () => {
       try {
-        const res = await fetch(`http://${ip}:3000/api/auth/userAuth/refresh/refreshSignin`, {
+        const res = await fetch(`${ApiZ}/api/auth/userAuth/refresh/refreshSignin`, {
           credentials: "include",
         });
 
